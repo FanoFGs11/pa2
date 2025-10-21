@@ -1,0 +1,203 @@
+/* --- Estilos Globales y Reseteo Básico --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    /* Este padding-top evita que el header fijo tape el contenido */
+    padding-top: 80px; 
+    background-color: #fdfdfd;
+}
+
+a {
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    color: #d9534f; /* Un color para enlaces */
+}
+
+header {
+    /* Posicionamiento fijo */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+    background-color: #ffffff;
+    border-bottom: 2px solid #f0f0f0;
+    padding: 15px 5%; /* 15px arriba/abajo, 5% a los lados */
+    box-sizing: border-box; /* Para que el padding no afecte el ancho total */
+    z-index: 1000; /* Asegura que el header esté sobre todo lo demás */
+
+    /* Usamos Flexbox para alinear el logo a la izquierda y el nav a la derecha */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+}
+
+.logo span { /* Para darle un toque de color al logo */
+    color: #d9534f;
+}
+
+nav ul {
+    list-style: none; /* Quita los puntos de la lista */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Pone los elementos del menú en línea */
+}
+
+nav li {
+    margin-left: 25px; /* Separación entre elementos del menú */
+}
+
+nav a {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #555;
+    padding-bottom: 5px; /* Espacio para el borde inferior del hover */
+}
+
+nav a i {
+    margin-right: 8px; /* Espacio entre el icono y el texto */
+}
+
+nav a:hover,
+nav a.active { /*estado activo */
+    color: #d9534f;
+    border-bottom: 2px solid #d9534f;
+}
+
+main {
+    padding: 20px 5%;
+    min-height: 75vh; /* Empuja el footer hacia abajo si hay poco contenido */
+}
+
+footer {
+    text-align: center;
+    padding: 30px 5%;
+    background-color: #333;
+    color: white;
+    margin-top: 40px;
+}
+
+footer .social-icons a {
+    color: white;
+    font-size: 1.5em;
+    margin: 0 10px;
+}
+
+/* --- Criterio 2: Hover para iconos del footer --- */
+footer .social-icons a:hover {
+    color: #d9534f;
+}
+
+/* === Página INDEX === */
+.hero {
+    height: 85vh; /* Alto de la portada */
+    background-image: url(img/fondo.jpg); /* Imagen de fondo */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+    /*Centrado con Flexbox*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para legibilidad */
+}
+
+.hero h1 {
+    font-size: 3.5em;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1.5em;
+}
+
+/* === Página BLOG === */
+article {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+/*Imagen redondeada  */
+.author-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* Esto la hace redonda */
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/*Alineación con float  */
+.image-float-left {
+    float: left;
+    margin: 0 20px 10px 0;
+    max-width: 400px; /* Límite de ancho */
+    border-radius: 5px;
+}
+
+/* === Página GALERÍA === */
+/* Criterio 4: Uso de Flex box*/
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las imágenes bajen si no caben */
+    justify-content: center;
+    gap: 20px; /* Espacio entre las imágenes */
+}
+
+.gallery-item {
+    width: 350px; /* Ancho de cada item de galería */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden; /* Oculta lo que se salga (para el scale) */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+/*cambio de filtro*/
+.gallery-item:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.gallery-item:hover img {
+    filter: grayscale(80%); /* Filtro de escala de grises */
+    transform: scale(1.05); /* Pequeño zoom */
+}
+
+
+/* === Página VIDEOS === */
+/*Inserción de video (responsivo)*/
+.video-responsive-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Proporción 16:9 (para videos) */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin-bottom: 20px;
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+.video-responsive-container iframe,
+.video-responsive-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
